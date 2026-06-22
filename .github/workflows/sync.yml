@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: HenryChiao/mihomo_yamls
-          ref: ruleset/meta/domain # 直接拉取指定分支
+          ref: ruleset
           path: upstream_repo
 
       - name: Setup Python
