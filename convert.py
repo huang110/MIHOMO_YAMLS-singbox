@@ -3,8 +3,8 @@ import os
 import glob
 import subprocess
 
-# 目录定义
-upstream_dir = "upstream_repo"
+# 目录定义 (已修复为精确读取 meta/domain 文件夹)
+upstream_dir = "upstream_repo/meta/domain"
 output_json_dir = "json"
 output_srs_dir = "srs"
 
