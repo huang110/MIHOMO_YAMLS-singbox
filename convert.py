@@ -14,6 +14,7 @@ os.makedirs(output_srs_dir, exist_ok=True)
 # 自动获取你的 GitHub 仓库信息，用于拼接直链
 github_repo = os.environ.get('GITHUB_REPOSITORY', '你的用户名/你的仓库名')
 cdn_base_url = f"https://cdn.jsdelivr.net/gh/{github_repo}@main/srs"
+github_base_url = f"https://raw.githubusercontent.com/{github_repo}/main/srs"
 
 files = []
 for ext in ('*.yaml', '*.yml', '*.srm', '*.list', '*.txt'):
@@ -24,6 +25,7 @@ if not files:
     exit(0)
 
 rule_set_configs = []
+links_text_lines = [] # 🌟 用于收集纯文本链接列表
 
 for filepath in files:
     filename = os.path.basename(filepath)
@@ -88,6 +90,7 @@ for filepath in files:
         
     subprocess.run(["sing-box", "rule-set", "compile", json_path, "-o", srs_path])
     
+    # 收集批量 JSON 配置
     rule_set_configs.append({
         "type": "remote",
         "tag": f"{name}",
@@ -95,13 +98,22 @@ for filepath in files:
         "url": f"{cdn_base_url}/{name}.srs",
         "download_detour": "direct"
     })
+    
+    # 🌟 收集纯文本链接列表（包含两种格式）
+    links_text_lines.append(f"【规则名称】：{name}")
+    links_text_lines.append(f"👉 CDN加速链接 (国内推荐): {cdn_base_url}/{name}.srs")
+    links_text_lines.append(f"👉 GitHub原生链接: {github_base_url}/{name}.srs")
+    links_text_lines.append("-" * 60)
 
-batch_config = {
-    "rule_set": rule_set_configs
-}
-
+# 保存批量 JSON 文件
+batch_config = {"rule_set": rule_set_configs}
 batch_config_path = os.path.join(output_srs_dir, "batch_config.json")
 with open(batch_config_path, "w", encoding='utf-8') as f:
     json.dump(batch_config, f, indent=2, ensure_ascii=False)
 
-print(f"🎉 批量导入配置文件已生成: {batch_config_path}")
+# 🌟 保存纯文本链接列表文件 links.txt
+links_txt_path = os.path.join(output_srs_dir, "links.txt")
+with open(links_txt_path, "w", encoding='utf-8') as f:
+    f.write("\n".join(links_text_lines))
+
+print(f"🎉 链接列表已成功生成: {links_txt_path}")
