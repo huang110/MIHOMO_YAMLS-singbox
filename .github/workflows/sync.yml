@@ -1,0 +1,46 @@
+name: Auto Convert Rules to SRS
+
+on:
+  schedule:
+    - cron: '0 2 * * *' # 每天北京时间上午10点自动运行
+  workflow_dispatch: # 支持在 Actions 面板手动点击运行
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout local repository
+        uses: actions/checkout@v4
+
+      - name: Checkout upstream Mihomo Yamls
+        uses: actions/checkout@v4
+        with:
+          repository: HenryChiao/mihomo_yamls
+          ref: ruleset/meta/domain # 直接拉取指定分支
+          path: upstream_repo
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install sing-box compiler (v1.8.0)
+        run: |
+          wget -qO- https://github.com/SagerNet/sing-box/releases/download/v1.8.0/sing-box-1.8.0-linux-amd64.tar.gz | tar xz
+          sudo mv sing-box-*/sing-box /usr/local/bin/
+
+      - name: Convert and Compile SRS
+        run: python convert.py
+
+      - name: Commit and Push results
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add srs/ json/
+          # 检查是否有内容变更，有则提交，无则跳过
+          if ! git diff --staged --quiet; then
+            git commit -m "Auto update srs rules"
+            git push
+          else
+            echo "No changes to commit"
+          fi
