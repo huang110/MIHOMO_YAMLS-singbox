@@ -36,10 +36,11 @@ jobs:
         run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git add srs/ json/
+          # 使用 add . 确保能把生成的 README 首页文件也一起保存到仓库
+          git add . 
           # 检查是否有内容变更，有则提交，无则跳过
           if ! git diff --staged --quiet; then
-            git commit -m "Auto update srs rules"
+            git commit -m "Auto update srs rules and README"
             git push
           else
             echo "No changes to commit"
