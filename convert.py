@@ -1,75 +1,107 @@
-{
-  "log": {
-    "level": "info",
-    "timestamp": true
-  },
-  "inbounds": [
-    {
-      "type": "tun",
-      "tag": "tun-in",
-      "interface_name": "tun0",
-      "inet4_address": "172.19.0.1/30",
-      "auto_route": true,
-      "strict_route": true,
-      "stack": "system",
-      "sniff": true
+import json
+import os
+import glob
+import subprocess
+
+# 目录定义
+upstream_dir = "upstream_repo/meta/domain"
+output_json_dir = "json"
+output_srs_dir = "srs"
+
+os.makedirs(output_json_dir, exist_ok=True)
+os.makedirs(output_srs_dir, exist_ok=True)
+
+# 自动获取你的 GitHub 仓库信息，用于拼接直链
+github_repo = os.environ.get('GITHUB_REPOSITORY', '你的用户名/你的仓库名')
+cdn_base_url = f"https://cdn.jsdelivr.net/gh/{github_repo}@main/srs"
+
+files = []
+for ext in ('*.yaml', '*.yml', '*.srm', '*.list', '*.txt'):
+    files.extend(glob.glob(f"{upstream_dir}/**/{ext}", recursive=True))
+
+if not files:
+    print(f"❌ 在 {upstream_dir} 下没有找到任何规则文件！")
+    exit(0)
+
+rule_set_configs = []
+
+for filepath in files:
+    filename = os.path.basename(filepath)
+    name = os.path.splitext(filename)[0]
+    
+    with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
+        lines = f.readlines()
+        
+    domain_suffix = []
+    domain = []
+    domain_keyword = []
+    
+    in_yaml_payload = False
+    for line in lines:
+        line = line.strip()
+        if not line or line.startswith('#'):
+            continue
+            
+        if line == 'payload:':
+            in_yaml_payload = True
+            continue
+            
+        item = ""
+        if line.startswith('- '):
+            item = line[2:].strip("'\" ")
+        else:
+            item = line.strip("'\" ")
+            
+        if not item: continue
+            
+        if item.startswith('+.'):
+            domain_suffix.append(item[2:])
+        elif item.startswith('DOMAIN-SUFFIX,'):
+            domain_suffix.append(item.split(',')[1])
+        elif item.startswith('DOMAIN,'):
+            domain.append(item.split(',')[1])
+        elif item.startswith('DOMAIN-KEYWORD,'):
+            domain_keyword.append(item.split(',')[1])
+        elif ',' not in item and not in_yaml_payload:
+            domain_suffix.append(item)
+        elif in_yaml_payload and ',' not in item:
+            domain_suffix.append(item)
+                
+    rules = []
+    if domain: rules.append({"domain": domain})
+    if domain_suffix: rules.append({"domain_suffix": domain_suffix})
+    if domain_keyword: rules.append({"domain_keyword": domain_keyword})
+    
+    if not rules:
+        continue
+
+    singbox_rule = {
+        "version": 1,
+        "rules": rules
     }
-  ],
-  "outbounds": [
-    {
-      "type": "selector",
-      "tag": "proxy",
-      "outbounds": ["auto", "节点1", "节点2"]
-    },
-    {
-      "type": "direct",
-      "tag": "direct"
-    },
-    {
-      "type": "block",
-      "tag": "block"
-    },
-    {
-      "type": "dns",
-      "tag": "dns-out"
-    }
-  ],
-  "route": {
-    "rule_set": [
-      {
+    
+    json_path = os.path.join(output_json_dir, f"{name}.json")
+    srs_path = os.path.join(output_srs_dir, f"{name}.srs")
+    
+    with open(json_path, "w", encoding='utf-8') as f:
+        json.dump(singbox_rule, f, indent=2)
+        
+    subprocess.run(["sing-box", "rule-set", "compile", json_path, "-o", srs_path])
+    
+    rule_set_configs.append({
         "type": "remote",
-        "tag": "rule-apple-cdn",
+        "tag": f"{name}",
         "format": "binary",
-        "url": "https://cdn.jsdelivr.net/gh/你的用户名/你的仓库名@main/srs/apple.srs",
+        "url": f"{cdn_base_url}/{name}.srs",
         "download_detour": "direct"
-      },
-      {
-        "type": "remote",
-        "tag": "rule-google-github",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/你的用户名/你的仓库名/main/srs/google.srs",
-        "download_detour": "direct"
-      }
-    ],
-    "rules": [
-      {
-        "protocol": "dns",
-        "outbound": "dns-out"
-      },
-      {
-        "rule_set": ["rule-apple-cdn"],
-        "outbound": "direct"
-      },
-      {
-        "rule_set": ["rule-google-github"],
-        "outbound": "proxy"
-      },
-      {
-        "ip_is_private": true,
-        "outbound": "direct"
-      }
-    ],
-    "final": "proxy",
-    "auto_detect_interface": true
-  }
+    })
+
+batch_config = {
+    "rule_set": rule_set_configs
 }
+
+batch_config_path = os.path.join(output_srs_dir, "batch_config.json")
+with open(batch_config_path, "w", encoding='utf-8') as f:
+    json.dump(batch_config, f, indent=2, ensure_ascii=False)
+
+print(f"🎉 批量导入配置文件已生成: {batch_config_path}")
