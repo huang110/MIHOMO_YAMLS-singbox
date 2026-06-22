@@ -1,0 +1,361 @@
+{
+  "rule_set": [
+    {
+      "type": "remote",
+      "tag": "socialmedia-cn",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/socialmedia-cn.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "twitch",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/twitch.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "primevideo",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/primevideo.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "private",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/private.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "iplocation-direct",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/iplocation-direct.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "talkatone",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/talkatone.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "microsoft-cn",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/microsoft-cn.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "httpdns",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/httpdns.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "speedtest",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/speedtest.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "apple-cn",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/apple-cn.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "hulu",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/hulu.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "forum",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/forum.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "cdn",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/cdn.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "apns",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/apns.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "googlefcm",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/googlefcm.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "proxy",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/proxy.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "dmm",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/dmm.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "apple",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/apple.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "disney",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/disney.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "apple-proxy",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/apple-proxy.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "tiktok",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/tiktok.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "socialmedia",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/socialmedia.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "niconico",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/niconico.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "crypto",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/crypto.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "iplocation-proxy",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/iplocation-proxy.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "gits",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/gits.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "cn",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/cn.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "games-cn",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/games-cn.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "youtube",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/youtube.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "gfw",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/gfw.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "google",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/google.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "bahamut",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/bahamut.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "bilibili",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/bilibili.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "ecommerce",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/ecommerce.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "apple-tv",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/apple-tv.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "ai",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/ai.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "dazn",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/dazn.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "mytvsuper",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/mytvsuper.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "onedrive",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/onedrive.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "dmca",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/dmca.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "fake-ip-filter",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/fake-ip-filter.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "hbo",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/hbo.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "abema",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/abema.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "microsoft",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/microsoft.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "spotify",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/spotify.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "paypal",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/paypal.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "adrules",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/adrules.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "games",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/games.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "tld-proxy",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/tld-proxy.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "netflix",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/netflix.srs",
+      "download_detour": "direct"
+    },
+    {
+      "type": "remote",
+      "tag": "douyin",
+      "format": "binary",
+      "url": "https://cdn.jsdelivr.net/gh/huang110/MIHOMO_YAMLS-singbox@main/srs/douyin.srs",
+      "download_detour": "direct"
+    }
+  ]
+}
