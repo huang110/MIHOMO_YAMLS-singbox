@@ -30,6 +30,7 @@
         "copilotprodattachments.blob.core.windows.net",
         "cp4.cloudflare.com",
         "daily-cloudcode-pa.googleapis.com",
+        "daily-cloudcode-pa.sandbox.googleapis.com",
         "geminiweb-pa.clients.google.com",
         "geminiweb-pa.clients6.google.com",
         "gspe1-ssl.ls.apple.com",
